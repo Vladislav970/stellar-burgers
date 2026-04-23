@@ -1,4 +1,4 @@
-import { TIngredient, TOrderStatus } from '@utils-types';
+import { TIngredient } from '@utils-types';
 
 export type OrderInfoUIProps = {
   orderInfo: TOrderInfo;
@@ -11,7 +11,7 @@ type TOrderInfo = {
   date: Date;
   total: number;
   _id: string;
-  status: TOrderStatus;
+  status: string;
   name: string;
   createdAt: string;
   updatedAt: string;

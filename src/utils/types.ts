@@ -16,21 +16,9 @@ export type TConstructorIngredient = TIngredient & {
   id: string;
 };
 
-export type TConstructorItems = {
-  bun: TIngredient | null;
-  ingredients: TConstructorIngredient[];
-};
-
-export type TOrderStatus =
-  | 'created'
-  | 'pending'
-  | 'done'
-  | 'ready'
-  | 'cancelled';
-
 export type TOrder = {
   _id: string;
-  status: TOrderStatus;
+  status: string;
   name: string;
   createdAt: string;
   updatedAt: string;
@@ -50,7 +38,3 @@ export type TUser = {
 };
 
 export type TTabMode = 'bun' | 'sauce' | 'main';
-
-export type TCreatedOrder = {
-  number: number;
-};
