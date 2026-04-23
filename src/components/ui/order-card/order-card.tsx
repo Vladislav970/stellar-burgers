@@ -1,4 +1,4 @@
-import { FC, memo } from 'react';
+import React, { FC, memo } from 'react';
 import { Link } from 'react-router-dom';
 import {
   CurrencyIcon,
@@ -11,7 +11,7 @@ import { OrderCardUIProps } from './type';
 import { OrderStatus } from '@components';
 
 export const OrderCardUI: FC<OrderCardUIProps> = memo(
-  ({ orderInfo, maxIngredients, showStatus, locationState }) => (
+  ({ orderInfo, maxIngredients, locationState }) => (
     <Link
       to={orderInfo.number.toString()}
       relative='path'
@@ -29,18 +29,19 @@ export const OrderCardUI: FC<OrderCardUIProps> = memo(
       <h4 className={`pt-6 text text_type_main-medium ${styles.order_name}`}>
         {orderInfo.name}
       </h4>
-      {showStatus && <OrderStatus status={orderInfo.status} />}
+      {location.pathname === '/profile/orders' && (
+        <OrderStatus status={orderInfo.status} />
+      )}
       <div className={`pt-6 ${styles.order_content}`}>
         <ul className={styles.ingredients}>
           {orderInfo.ingredientsToShow.map((ingredient, index) => {
-            const zIndex = maxIngredients - index;
-            const right = 20 * index;
-
+            let zIndex = maxIngredients - index;
+            let right = 20 * index;
             return (
               <li
                 className={styles.img_wrap}
-                style={{ zIndex, right }}
-                key={`${ingredient._id}-${index}`}
+                style={{ zIndex: zIndex, right: right }}
+                key={index}
               >
                 <img
                   style={{

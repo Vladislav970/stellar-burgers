@@ -1,4 +1,4 @@
-import { FC, memo } from 'react';
+import React, { FC, memo } from 'react';
 import {
   CurrencyIcon,
   FormattedDate
@@ -11,15 +11,14 @@ import { OrderStatus } from '@components';
 
 export const OrderInfoUI: FC<OrderInfoUIProps> = memo(({ orderInfo }) => (
   <div className={styles.wrap}>
-    <p className={`text text_type_digits-default ${styles.header}`}>
-      #{String(orderInfo.number).padStart(6, '0')}
-    </p>
-    <h3 className='text text_type_main-medium pb-3 pt-6'>{orderInfo.name}</h3>
+    <h3 className={`text text_type_main-medium  pb-3 pt-10 ${styles.header}`}>
+      {orderInfo.name}
+    </h3>
     <OrderStatus status={orderInfo.status} />
-    <p className='text text_type_main-medium pt-15 pb-6'>Состав:</p>
+    <p className={`text text_type_main-medium pt-15 pb=6`}>Состав:</p>
     <ul className={`${styles.list} mb-8`}>
-      {Object.values(orderInfo.ingredientsInfo).map((item) => (
-        <li className={`pb-4 pr-6 ${styles.item}`} key={item._id}>
+      {Object.values(orderInfo.ingredientsInfo).map((item, index) => (
+        <li className={`pb-4 pr-6 ${styles.item}`} key={index}>
           <div className={styles.img_wrap}>
             <div className={styles.border}>
               <img
@@ -35,7 +34,7 @@ export const OrderInfoUI: FC<OrderInfoUIProps> = memo(({ orderInfo }) => (
           >
             {item.count} x {item.price}
           </span>
-          <CurrencyIcon type='primary' />
+          <CurrencyIcon type={'primary'} />
         </li>
       ))}
     </ul>
@@ -46,7 +45,7 @@ export const OrderInfoUI: FC<OrderInfoUIProps> = memo(({ orderInfo }) => (
       <span className={`text text_type_digits-default pr-4 ${styles.total}`}>
         {orderInfo.total}
       </span>
-      <CurrencyIcon type='primary' />
+      <CurrencyIcon type={'primary'} />
     </div>
   </div>
 ));

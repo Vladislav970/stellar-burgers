@@ -1,8 +1,6 @@
-import { FC } from 'react';
-import clsx from 'clsx';
-import { NavLink } from 'react-router-dom';
-
+import React, { FC } from 'react';
 import styles from './profile-menu.module.css';
+import { NavLink } from 'react-router-dom';
 import { ProfileMenuUIProps } from './type';
 
 export const ProfileMenuUI: FC<ProfileMenuUIProps> = ({
@@ -11,37 +9,29 @@ export const ProfileMenuUI: FC<ProfileMenuUIProps> = ({
 }) => (
   <>
     <NavLink
-      to='/profile'
+      to={'/profile'}
       className={({ isActive }) =>
-        clsx(
-          'text text_type_main-medium text_color_inactive pt-4 pb-4',
-          styles.link,
-          isActive && styles.link_active
-        )
+        `text text_type_main-medium text_color_inactive pt-4 pb-4 ${
+          styles.link
+        } ${isActive ? styles.link_active : ''}`
       }
       end
     >
       Профиль
     </NavLink>
     <NavLink
-      to='/profile/orders'
+      to={'/profile/orders'}
       className={({ isActive }) =>
-        clsx(
-          'text text_type_main-medium text_color_inactive pt-4 pb-4',
-          styles.link,
-          isActive && styles.link_active
-        )
+        `text text_type_main-medium text_color_inactive pt-4 pb-4 ${
+          styles.link
+        } ${isActive ? styles.link_active : ''}`
       }
     >
       История заказов
     </NavLink>
     <button
-      className={clsx(
-        'text text_type_main-medium text_color_inactive pt-4 pb-4',
-        styles.button
-      )}
+      className={`text text_type_main-medium text_color_inactive pt-4 pb-4 ${styles.button}`}
       onClick={handleLogout}
-      type='button'
     >
       Выход
     </button>
