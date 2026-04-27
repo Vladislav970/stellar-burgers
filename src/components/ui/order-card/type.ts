@@ -1,9 +1,10 @@
 import { Location } from 'react-router-dom';
-import { TIngredient } from '@utils-types';
+import { TIngredient, TOrderStatus } from '@utils-types';
 
 export type OrderCardUIProps = {
   orderInfo: TOrderInfo;
   maxIngredients: number;
+  showStatus?: boolean;
   locationState: { background: Location };
 };
 
@@ -14,7 +15,7 @@ type TOrderInfo = {
   total: number;
   date: Date;
   _id: string;
-  status: string;
+  status: TOrderStatus;
   name: string;
   createdAt: string;
   updatedAt: string;
